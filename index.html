@@ -1,0 +1,2508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AB-AS Café — Dessie, Ethiopia</title>
+  <meta name="description"
+    content="AB-AS Café in Dessie, Arada — coffee, burgers, pizza, refreshing drinks and a cozy atmosphere. In front of Rukiya Hall, 2nd floor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ══════════════════════════════════════════════════
+   AB-AS CAFÉ — STYLES
+   Palette taken from the real interior:
+   red seating · checkered floor · golden light · wood
+   ══════════════════════════════════════════════════ */
+    :root {
+      --red: #c1121f;
+      --red-deep: #7a0c14;
+      --red-bright: #e63946;
+      --black: #0d0b09;
+      --ink: #171310;
+      --charcoal: #241d17;
+      --cream: #f7f1e6;
+      --paper: #fdf9f1;
+      --gold: #d9a441;
+      --gold-soft: #e9c988;
+      --wood: #8b5a2b;
+      --muted: #7a6f63;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Inter", system-ui, sans-serif;
+      --shadow-lg: 0 30px 60px -20px rgba(13, 11, 9, .45);
+      --radius: 22px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      *,
+      *:before,
+      *:after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important
+      }
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.65;
+      overflow-x: hidden
+    }
+
+    img {
+      max-width: 100%;
+      display: block
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      line-height: 1.12
+    }
+
+    section {
+      padding: clamp(72px, 9vw, 120px) 0
+    }
+
+    .wrap {
+      width: min(1180px, 92%);
+      margin-inline: auto
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: .78rem;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--red)
+    }
+
+    .kicker::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--gold)
+    }
+
+    .sec-title {
+      font-size: clamp(2rem, 4.4vw, 3.2rem);
+      margin: .5rem 0 1rem;
+      color: var(--black)
+    }
+
+    .sec-title em {
+      font-style: italic;
+      color: var(--red)
+    }
+
+    .sec-sub {
+      color: var(--muted);
+      max-width: 560px;
+      font-size: 1.02rem
+    }
+
+    /* checker motif */
+    .checker {
+      height: 14px;
+      background:
+        conic-gradient(var(--black) 25%, var(--cream) 0 50%, var(--black) 0 75%, var(--cream) 0);
+      background-size: 14px 14px;
+      opacity: .9
+    }
+
+    /* ════════ HEADER ════════ */
+    #header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 60;
+      transition: background .4s, box-shadow .4s, padding .4s;
+      padding: 20px 0
+    }
+
+    #header.scrolled {
+      background: rgba(13, 11, 9, .92);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+      padding: 12px 0
+    }
+
+    .nav {
+      width: min(1180px, 92%);
+      margin-inline: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--cream)
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--red), var(--red-deep));
+      object-fit: contain;
+      padding: 2px;
+      border: 2px solid var(--gold);
+      flex: none
+    }
+
+    .brand b {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      letter-spacing: .06em
+    }
+
+    .brand small {
+      display: block;
+      font-size: .62rem;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      font-family: var(--sans);
+      font-weight: 500
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none
+    }
+
+    .nav-links a {
+      color: rgba(247, 241, 230, .85);
+      font-size: .86rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      position: relative;
+      padding: 6px 0
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width .3s
+    }
+
+    .nav-links a:hover {
+      color: #fff
+    }
+
+    .nav-links a:hover::after {
+      width: 100%
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      font-weight: 600;
+      font-size: .85rem;
+      padding: 11px 22px;
+      border-radius: 999px;
+      transition: transform .25s, background .25s;
+      border: 1px solid rgba(230, 201, 136, .35)
+    }
+
+    .nav-cta:hover {
+      background: var(--red-bright);
+      transform: translateY(-2px)
+    }
+
+    .burger {
+      display: none;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      width: 44px;
+      height: 44px;
+      position: relative;
+      z-index: 80
+    }
+
+    .burger span {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      height: 2px;
+      background: var(--cream);
+      transition: .35s;
+      border-radius: 2px
+    }
+
+    .burger span:nth-child(1) {
+      top: 15px
+    }
+
+    .burger span:nth-child(2) {
+      top: 21px
+    }
+
+    .burger span:nth-child(3) {
+      top: 27px
+    }
+
+    .burger.open span:nth-child(1) {
+      top: 21px;
+      transform: rotate(45deg);
+      background: var(--gold)
+    }
+
+    .burger.open span:nth-child(2) {
+      opacity: 0
+    }
+
+    .burger.open span:nth-child(3) {
+      top: 21px;
+      transform: rotate(-45deg);
+      background: var(--gold)
+    }
+
+    #mobileMenu {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(160deg, var(--black), var(--red-deep));
+      z-index: 70;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .4s
+    }
+
+    #mobileMenu.open {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    #mobileMenu a {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 7vw, 2.6rem);
+      color: var(--cream);
+      padding: 8px 20px;
+      transform: translateY(18px);
+      opacity: 0;
+      transition: .5s
+    }
+
+    #mobileMenu.open a {
+      transform: none;
+      opacity: 1
+    }
+
+    #mobileMenu a:nth-child(2) {
+      transition-delay: .06s
+    }
+
+    #mobileMenu a:nth-child(3) {
+      transition-delay: .12s
+    }
+
+    #mobileMenu a:nth-child(4) {
+      transition-delay: .18s
+    }
+
+    #mobileMenu a:nth-child(5) {
+      transition-delay: .24s
+    }
+
+    #mobileMenu a:nth-child(6) {
+      transition-delay: .3s
+    }
+
+    #mobileMenu .mm-meta {
+      margin-top: 26px;
+      color: var(--gold-soft);
+      font-size: .85rem;
+      letter-spacing: .2em;
+      text-transform: uppercase
+    }
+
+    @media(max-width:900px) {
+
+      .nav-links,
+      .nav-cta {
+        display: none
+      }
+
+      .burger {
+        display: block
+      }
+    }
+
+    /* ════════ HERO ════════ */
+    #home {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      overflow: hidden;
+      background: var(--black)
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.12);
+      opacity: 0;
+      transition: transform 2.4s cubic-bezier(.22, 1, .3, 1), opacity 1.6s ease
+    }
+
+    .hero-media img.loaded {
+      transform: scale(1.04);
+      opacity: 1
+    }
+
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(13, 11, 9, .72) 0%, rgba(13, 11, 9, .35) 40%, rgba(13, 11, 9, .85) 100%),
+        radial-gradient(60% 60% at 75% 30%, rgba(217, 164, 65, .18), transparent 70%)
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1180px, 92%);
+      margin-inline: auto;
+      padding: 130px 0 110px
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(233, 201, 136, .4);
+      border-radius: 999px;
+      padding: 8px 18px;
+      font-size: .75rem;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      background: rgba(13, 11, 9, .35);
+      backdrop-filter: blur(6px)
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 9.5vw, 6.8rem);
+      font-weight: 800;
+      color: var(--cream);
+      margin: 22px 0 6px;
+      letter-spacing: .01em;
+      text-shadow: 0 8px 40px rgba(0, 0, 0, .45)
+    }
+
+    .hero-title .accent {
+      color: var(--gold-soft);
+      font-style: italic;
+      font-weight: 600
+    }
+
+    .hero-loc {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.6vw, 1.6rem);
+      color: var(--gold-soft)
+    }
+
+    .hero-tag {
+      margin: 26px 0 38px;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(247, 241, 230, .9);
+      max-width: 520px;
+      font-weight: 300
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: .92rem;
+      letter-spacing: .04em;
+      transition: transform .28s, box-shadow .28s, background .28s;
+      cursor: pointer;
+      border: 0
+    }
+
+    .btn-primary {
+      background: var(--red);
+      color: #fff;
+      box-shadow: 0 14px 34px -10px rgba(193, 18, 31, .6)
+    }
+
+    .btn-primary:hover {
+      background: var(--red-bright);
+      transform: translateY(-3px)
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--black)
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-soft);
+      transform: translateY(-3px)
+    }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(247, 241, 230, .55);
+      color: var(--cream);
+      background: rgba(13, 11, 9, .25);
+      backdrop-filter: blur(4px)
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold-soft);
+      color: var(--gold-soft);
+      transform: translateY(-3px)
+    }
+
+    .hero-foot {
+      position: absolute;
+      bottom: 26px;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      display: flex;
+      justify-content: center
+    }
+
+    .hero-scroll {
+      color: rgba(247, 241, 230, .75);
+      font-size: .72rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px
+    }
+
+    .hero-scroll::after {
+      content: "";
+      width: 1px;
+      height: 34px;
+      background: linear-gradient(var(--gold-soft), transparent);
+      animation: drip 2s infinite
+    }
+
+    @keyframes drip {
+      0% {
+        transform: scaleY(0);
+        transform-origin: top
+      }
+
+      55% {
+        transform: scaleY(1);
+        transform-origin: top
+      }
+
+      56% {
+        transform-origin: bottom
+      }
+
+      100% {
+        transform: scaleY(0);
+        transform-origin: bottom
+      }
+    }
+
+    /* staged text reveals */
+    .rv {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 1s ease, transform 1s cubic-bezier(.22, 1, .3, 1)
+    }
+
+    body.loaded-page .rv {
+      opacity: 1;
+      transform: none
+    }
+
+    body.loaded-page .rv.d1 {
+      transition-delay: .25s
+    }
+
+    body.loaded-page .rv.d2 {
+      transition-delay: .45s
+    }
+
+    body.loaded-page .rv.d3 {
+      transition-delay: .65s
+    }
+
+    body.loaded-page .rv.d4 {
+      transition-delay: .85s
+    }
+
+    /* ════════ IMAGE SLOTS & FALLBACKS ════════ */
+    .img-slot {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(150deg, var(--charcoal), #3a2a1c 55%, var(--red-deep));
+      border-radius: var(--radius)
+    }
+
+    .img-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity .9s ease, transform .8s cubic-bezier(.22, 1, .3, 1)
+    }
+
+    .img-slot.has-img img {
+      opacity: 1
+    }
+
+    .img-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+      padding: 22px;
+      color: rgba(247, 241, 230, .8)
+    }
+
+    .img-fallback::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        conic-gradient(rgba(255, 255, 255, .045) 25%, transparent 0 50%, rgba(255, 255, 255, .045) 0 75%, transparent 0);
+      background-size: 22px 22px
+    }
+
+    .ph-icon {
+      width: 44px;
+      height: 44px;
+      color: var(--gold-soft)
+    }
+
+    .ph-label {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1rem
+    }
+
+    .ph-file {
+      font-size: .68rem;
+      letter-spacing: .08em;
+      color: rgba(233, 201, 136, .65);
+      word-break: break-all
+    }
+
+    /* ════════ ABOUT ════════ */
+    #about {
+      background: var(--paper);
+      position: relative
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: center
+    }
+
+    .collage {
+      position: relative
+    }
+
+    .collage-a {
+      aspect-ratio: 4/4.6;
+      box-shadow: var(--shadow-lg)
+    }
+
+    .collage-b {
+      position: absolute;
+      width: 56%;
+      right: -6%;
+      bottom: -9%;
+      aspect-ratio: 4/3.2;
+      border: 6px solid var(--paper);
+      box-shadow: var(--shadow-lg)
+    }
+
+    .collage-badge {
+      position: absolute;
+      left: -4%;
+      top: -5%;
+      background: var(--red);
+      color: #fff;
+      border-radius: 18px;
+      padding: 18px 22px;
+      box-shadow: 0 18px 40px -12px rgba(193, 18, 31, .55);
+      transform: rotate(-3deg)
+    }
+
+    .collage-badge b {
+      display: block;
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      line-height: 1
+    }
+
+    .collage-badge span {
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold-soft)
+    }
+
+    .about-copy .sec-sub {
+      margin-bottom: 26px
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1px solid #eadfcc;
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: .86rem;
+      font-weight: 500;
+      box-shadow: 0 4px 14px rgba(23, 19, 16, .05)
+    }
+
+    .pill i {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      flex: none
+    }
+
+    @media(max-width:900px) {
+      .about-grid {
+        grid-template-columns: 1fr
+      }
+
+      .collage {
+        margin: 0 6% 60px
+      }
+    }
+
+    /* ════════ SERVE / MENU ════════ */
+    #menu {
+      background: var(--black);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden
+    }
+
+    #menu::before {
+      content: "";
+      position: absolute;
+      top: -140px;
+      right: -140px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(217, 164, 65, .16), transparent 70%)
+    }
+
+    #menu .sec-title {
+      color: var(--cream)
+    }
+
+    #menu .sec-sub {
+      color: rgba(247, 241, 230, .65)
+    }
+
+    #full-menu {
+      background: var(--black);
+      color: var(--cream);
+      position: relative;
+      overflow: hidden
+    }
+
+    #full-menu::before {
+      content: "";
+      position: absolute;
+      top: -140px;
+      left: -160px;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(217, 164, 65, .12), transparent 70%)
+    }
+
+    #full-menu .wrap {
+      position: relative
+    }
+
+    #full-menu .sec-title {
+      color: var(--cream)
+    }
+
+    #full-menu .sec-sub {
+      color: rgba(247, 241, 230, .65)
+    }
+
+    .menu-head {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 52px
+    }
+
+    .menu-note {
+      border: 1px dashed rgba(233, 201, 136, .45);
+      border-radius: 16px;
+      padding: 14px 20px;
+      font-size: .85rem;
+      color: var(--gold-soft);
+      max-width: 380px;
+      background: rgba(217, 164, 65, .06)
+    }
+
+    .menu-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px
+    }
+
+    .menu-preview-card {
+      background: var(--charcoal);
+      border: 1px solid rgba(233, 201, 136, .14);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: transform .3s, border-color .3s, box-shadow .3s
+    }
+
+    .menu-preview-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(233, 201, 136, .4);
+      box-shadow: 0 24px 44px -22px rgba(0, 0, 0, .8)
+    }
+
+    .menu-preview-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover
+    }
+
+    .menu-preview-body {
+      padding: 18px
+    }
+
+    .menu-preview-body h3 {
+      font-size: 1.2rem;
+      color: var(--cream)
+    }
+
+    .menu-preview-body p {
+      margin-top: 8px;
+      color: rgba(247, 241, 230, .66);
+      font-size: .84rem
+    }
+
+    .menu-preview-body .menu-price {
+      margin-top: 12px
+    }
+
+    .menu-preview-cta {
+      margin-top: 34px;
+      text-align: center
+    }
+
+    .menu-category-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 48px
+    }
+
+    .menu-category-nav a {
+      border: 1px solid rgba(233, 201, 136, .4);
+      border-radius: 999px;
+      padding: 9px 18px;
+      color: var(--gold-soft);
+      font-size: .82rem;
+      font-weight: 600;
+      transition: background .2s, color .2s
+    }
+
+    .menu-category-nav a:hover,
+    .menu-category-nav a:focus-visible {
+      background: var(--gold);
+      color: var(--black);
+      outline: none
+    }
+
+    .menu-category {
+      position: relative;
+      margin-top: 52px;
+      scroll-margin-top: 100px
+    }
+
+    .menu-category:first-child {
+      margin-top: 0
+    }
+
+    .menu-category h3 {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--cream);
+      font-size: clamp(1.7rem, 3vw, 2.25rem);
+      margin-bottom: 22px
+    }
+
+    .menu-category h3::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: rgba(233, 201, 136, .28)
+    }
+
+    .menu-items {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px
+    }
+
+    .menu-item {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 18px;
+      align-items: center;
+      padding: 14px;
+      background: var(--charcoal);
+      border: 1px solid rgba(233, 201, 136, .14);
+      border-radius: 18px;
+      transition: transform .25s, border-color .25s, box-shadow .25s
+    }
+
+    .menu-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(233, 201, 136, .45);
+      box-shadow: 0 18px 35px -20px rgba(0, 0, 0, .8)
+    }
+
+    .menu-item img {
+      width: 112px;
+      height: 112px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: var(--cream)
+    }
+
+    .menu-item h4 {
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      line-height: 1.2;
+      color: var(--cream)
+    }
+
+    .menu-item p {
+      margin-top: 7px;
+      color: rgba(247, 241, 230, .66);
+      font-size: .8rem;
+      line-height: 1.5
+    }
+
+    .menu-price {
+      display: inline-block;
+      margin-top: 10px;
+      color: var(--gold-soft);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .04em
+    }
+
+    .serve-cta {
+      margin-top: 54px;
+      text-align: center
+    }
+
+    .serve-cta p {
+      color: rgba(247, 241, 230, .65);
+      margin-bottom: 20px;
+      font-size: .95rem
+    }
+
+    @media(max-width:1100px) {
+      .menu-items {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+      }
+
+      .menu-preview-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+      }
+    }
+
+    @media(max-width:640px) {
+
+      .menu-items,
+      .menu-preview-grid {
+        grid-template-columns: 1fr
+      }
+
+      .menu-item {
+        grid-template-columns: 96px minmax(0, 1fr)
+      }
+
+      .menu-item img {
+        width: 96px;
+        height: 96px
+      }
+    }
+
+    /* ════════ GALLERY ════════ */
+    #gallery {
+      background: var(--paper)
+    }
+
+    #masonry {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 96px;
+      grid-auto-flow: dense;
+      gap: 16px
+    }
+
+    .g-item {
+      cursor: pointer;
+      transition: opacity .6s, transform .6s;
+      grid-row: span 2
+    }
+
+    .g-item .img-slot {
+      width: 100%;
+      height: 100%;
+      border-radius: 16px
+    }
+
+    .g-item:hover .img-slot img {
+      transform: scale(1.08)
+    }
+
+    .g-item:hover .img-slot {
+      box-shadow: 0 24px 44px -16px rgba(23, 19, 16, .45)
+    }
+
+    .g-item:hover .img-fallback::before {
+      background-size: 26px 26px
+    }
+
+    .g-cap {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 34px 16px 14px;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      color: #fff;
+      background: linear-gradient(transparent, rgba(13, 11, 9, .82));
+      opacity: 0;
+      transition: opacity .4s
+    }
+
+    .g-item:hover .g-cap {
+      opacity: 1
+    }
+
+    .r-tall {
+      grid-row: span 3
+    }
+
+    .r-wide {
+      grid-column: span 2;
+      grid-row: span 2
+    }
+
+    .r-mid {
+      grid-row: span 2
+    }
+
+    .r-sq {
+      grid-row: span 2
+    }
+
+    @media(max-width:900px) {
+      #masonry {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 84px
+      }
+    }
+
+    @media(max-width:520px) {
+      #masonry {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 64px;
+        gap: 10px
+      }
+    }
+
+    /* ════════ TESTIMONIALS ════════ */
+    #testimonials {
+      background: var(--cream)
+    }
+
+    .reviews-heading {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 48px
+    }
+
+    .review-summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 18px;
+      padding: 10px 18px;
+      border: 1px solid #eadfcc;
+      border-radius: 999px;
+      background: var(--paper);
+      color: var(--ink)
+    }
+
+    .review-summary strong {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      color: var(--red)
+    }
+
+    .review-summary span {
+      font-size: .82rem;
+      color: var(--muted)
+    }
+
+    .review-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin-inline: auto
+    }
+
+    .review-card {
+      padding: clamp(24px, 4vw, 36px);
+      border: 1px solid #eadfcc;
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 12px 32px rgba(23, 19, 16, .06)
+    }
+
+    .review-stars {
+      color: #b7791f;
+      font-size: 1rem;
+      letter-spacing: .12em
+    }
+
+    .review-quote {
+      margin: 18px 0 24px;
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: clamp(1.15rem, 2vw, 1.4rem);
+      line-height: 1.5
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border-top: 1px solid #eadfcc;
+      padding-top: 16px
+    }
+
+    .review-author strong {
+      font-size: .92rem
+    }
+
+    .review-author span {
+      color: var(--muted);
+      font-size: .78rem
+    }
+
+    .review-cta {
+      margin-top: 38px;
+      text-align: center
+    }
+
+    @media(max-width:640px) {
+      .review-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ════════ LIGHTBOX ════════ */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(13, 11, 9, .94);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s
+    }
+
+    #lightbox.open {
+      opacity: 1;
+      pointer-events: auto
+    }
+
+    #lbImg {
+      max-width: 88vw;
+      max-height: 80vh;
+      border-radius: 14px;
+      box-shadow: 0 40px 90px rgba(0, 0, 0, .7);
+      transform: scale(.94);
+      transition: transform .35s;
+      object-fit: contain
+    }
+
+    #lightbox.open #lbImg {
+      transform: none
+    }
+
+    #lbCap {
+      position: absolute;
+      bottom: 34px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: var(--gold-soft);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.05rem
+    }
+
+    .lb-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1px solid rgba(233, 201, 136, .4);
+      background: rgba(13, 11, 9, .55);
+      color: var(--cream);
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: .3s;
+      display: grid;
+      place-items: center
+    }
+
+    .lb-btn:hover {
+      background: var(--red);
+      border-color: var(--red)
+    }
+
+    #lbPrev {
+      left: 22px
+    }
+
+    #lbNext {
+      right: 22px
+    }
+
+    #lbClose {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(233, 201, 136, .4);
+      background: rgba(13, 11, 9, .55);
+      color: var(--cream);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: .3s
+    }
+
+    #lbClose:hover {
+      background: var(--red);
+      transform: rotate(90deg)
+    }
+
+    @media(max-width:600px) {
+      .lb-btn {
+        width: 42px;
+        height: 42px;
+        top: auto;
+        bottom: 76px;
+        transform: none
+      }
+
+      #lbPrev {
+        left: calc(50% - 58px)
+      }
+
+      #lbNext {
+        right: calc(50% - 58px)
+      }
+    }
+
+    /* ════════ CONTACT ════════ */
+    #contact {
+      background: linear-gradient(160deg, var(--red-deep), var(--red) 55%, #a30f1a);
+      color: #fff;
+      position: relative;
+      overflow: hidden
+    }
+
+    #contact::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        conic-gradient(rgba(255, 255, 255, .035) 25%, transparent 0 50%, rgba(255, 255, 255, .035) 0 75%, transparent 0);
+      background-size: 30px 30px
+    }
+
+    #contact .wrap {
+      position: relative
+    }
+
+    #contact .kicker {
+      color: var(--gold-soft)
+    }
+
+    #contact .kicker::before {
+      background: var(--gold-soft)
+    }
+
+    #contact .sec-title {
+      color: #fff
+    }
+
+    #contact .sec-sub {
+      color: rgba(255, 255, 255, .85)
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(36px, 5vw, 64px);
+      margin-top: 48px;
+      align-items: stretch
+    }
+
+    .info-card {
+      background: rgba(13, 11, 9, .35);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(233, 201, 136, .3);
+      border-radius: var(--radius);
+      padding: clamp(28px, 4vw, 44px);
+      display: flex;
+      flex-direction: column;
+      gap: 22px
+    }
+
+    .info-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start
+    }
+
+    .info-ic {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      background: rgba(233, 201, 136, .15);
+      border: 1px solid rgba(233, 201, 136, .35);
+      display: grid;
+      place-items: center;
+      flex: none;
+      color: var(--gold-soft)
+    }
+
+    .info-row h4 {
+      font-family: var(--sans);
+      font-size: .7rem;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+      margin-bottom: 4px
+    }
+
+    .info-row p,
+    .info-row a {
+      font-size: 1.02rem;
+      font-weight: 500;
+      color: #fff
+    }
+
+    .info-row a:hover {
+      color: var(--gold-soft)
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 8px
+    }
+
+    .act {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 24px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: .88rem;
+      transition: transform .25s, background .25s
+    }
+
+    .act-call {
+      background: #fff;
+      color: var(--red-deep)
+    }
+
+    .act-call:hover {
+      transform: translateY(-3px);
+      background: var(--cream)
+    }
+
+    .act-tiktok {
+      background: var(--black);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, .2)
+    }
+
+    .act-tiktok:hover {
+      transform: translateY(-3px);
+      background: #000
+    }
+
+    .map-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 380px;
+      border: 1px solid rgba(233, 201, 136, .3);
+      position: relative;
+      background: var(--charcoal)
+    }
+
+    .map-card iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: sepia(.25) saturate(1.05)
+    }
+
+    @media(max-width:900px) {
+      .contact-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    /* ════════ FOOTER ════════ */
+    footer {
+      background: var(--black);
+      color: rgba(247, 241, 230, .7);
+      padding: 64px 0 34px
+    }
+
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 44px;
+      margin-bottom: 44px
+    }
+
+    .foot-brand .brand {
+      margin-bottom: 14px
+    }
+
+    .foot-brand p {
+      font-size: .92rem;
+      max-width: 300px
+    }
+
+    footer h5 {
+      font-family: var(--sans);
+      color: var(--gold-soft);
+      font-size: .72rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      margin-bottom: 16px
+    }
+
+    .foot-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px
+    }
+
+    .foot-links a {
+      font-size: .94rem;
+      transition: color .25s, padding-left .25s
+    }
+
+    .foot-links a:hover {
+      color: var(--gold-soft);
+      padding-left: 6px
+    }
+
+    .foot-bottom {
+      border-top: 1px solid rgba(247, 241, 230, .12);
+      padding-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: space-between;
+      font-size: .8rem;
+      color: rgba(247, 241, 230, .5)
+    }
+
+    @media(max-width:800px) {
+      .foot-grid {
+        grid-template-columns: 1fr;
+        gap: 34px
+      }
+    }
+
+    /* floating call (mobile) */
+    #floatCall {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 50;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      display: none;
+      place-items: center;
+      box-shadow: 0 16px 34px -8px rgba(193, 18, 31, .65);
+      animation: pulse 2.4s infinite
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 16px 34px -8px rgba(193, 18, 31, .65), 0 0 0 0 rgba(230, 57, 70, .5)
+      }
+
+      70% {
+        box-shadow: 0 16px 34px -8px rgba(193, 18, 31, .65), 0 0 0 18px rgba(230, 57, 70, 0)
+      }
+
+      100% {
+        box-shadow: 0 16px 34px -8px rgba(193, 18, 31, .65), 0 0 0 0 rgba(230, 57, 70, 0)
+      }
+    }
+
+    @media(max-width:640px) {
+      #floatCall {
+        display: grid
+      }
+    }
+
+    /* ════════ RESERVATION PAGE ════════ */
+    #page-reservation>section {
+      min-height: 75vh;
+      padding: clamp(68px, 8vw, 104px) 0;
+      background: linear-gradient(145deg, #f0e6d6, var(--cream));
+    }
+
+    #page-reservation>section>.mx-auto.max-w-5xl {
+      width: min(1000px, 92%);
+      max-width: none;
+      margin-inline: auto;
+      padding-inline: 0;
+    }
+
+    #page-reservation .mx-auto.mb-12 {
+      max-width: 680px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    #page-reservation .mx-auto.mb-12>p:first-child {
+      color: var(--red);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+
+    #page-reservation h2 {
+      margin-top: 10px;
+      color: var(--black);
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.12;
+    }
+
+    #page-reservation .mx-auto.mb-12>p:nth-of-type(2) {
+      max-width: 540px;
+      margin: 14px auto 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    #page-reservation .mx-auto.mb-12>div {
+      width: 64px;
+      height: 3px;
+      margin: 20px auto 0;
+      background: var(--gold);
+    }
+
+    #page-reservation .grid.gap-10 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      align-items: start;
+      gap: 30px;
+    }
+
+    #page-reservation .rounded-2xl.bg-cream {
+      padding: clamp(24px, 4vw, 38px);
+      border: 1px solid rgba(139, 90, 43, .14);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: 0 22px 55px -30px rgba(13, 11, 9, .45);
+    }
+
+    #resForm {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    #resForm>.grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    #resForm label {
+      display: block;
+      color: var(--ink);
+      font-size: .88rem;
+      font-weight: 600;
+    }
+
+    #resForm label span {
+      display: block;
+      margin-bottom: 7px;
+    }
+
+    #resForm input {
+      display: block;
+      width: 100%;
+      min-height: 48px;
+      padding: 11px 14px;
+      border: 1px solid #d8cbb8;
+      border-radius: 10px;
+      background: #fffdfa;
+      color: var(--ink);
+      font: 400 .95rem var(--sans);
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    #resForm input::placeholder {
+      color: #958879;
+    }
+
+    #resForm input:focus-visible {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(193, 18, 31, .15);
+    }
+
+    #resForm button {
+      width: 100%;
+      min-height: 50px;
+      padding: 12px 22px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--red);
+      color: #fff;
+      font: 700 .82rem var(--sans);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 26px -12px rgba(193, 18, 31, .7);
+      cursor: pointer;
+      transition: transform .2s, background .2s, box-shadow .2s;
+    }
+
+    #resForm button:hover {
+      transform: translateY(-2px);
+      background: var(--red-bright);
+      box-shadow: 0 16px 30px -12px rgba(193, 18, 31, .7);
+    }
+
+    #resForm button:focus-visible,
+    #resSuccess a:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    #resSuccess[hidden],
+    #page-reservation .hidden {
+      display: none !important;
+    }
+
+    #resSuccess {
+      padding-top: 8px;
+    }
+
+    #resSuccess>p:first-child {
+      color: var(--black);
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 700;
+    }
+
+    #resSuccess>p:nth-child(2) {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    #resSuccess>div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    #resSuccess a {
+      display: inline-flex;
+      min-height: 46px;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 20px;
+      border: 1px solid #d8cbb8;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: .84rem;
+      font-weight: 700;
+      transition: background .2s, transform .2s;
+    }
+
+    #resSuccess a:hover {
+      transform: translateY(-2px);
+      background: var(--gold-soft);
+    }
+
+    #page-reservation .space-y-6 {
+      display: grid;
+      gap: 20px;
+    }
+
+    #page-reservation .space-y-6 h3 {
+      color: var(--black);
+      font-size: 1.35rem;
+    }
+
+    #page-reservation .space-y-6 p {
+      color: var(--muted);
+      font-size: .93rem;
+      line-height: 1.7;
+    }
+
+    #page-reservation .space-y-6 p strong {
+      color: var(--ink);
+    }
+
+    #page-reservation #reservationPhoneLink {
+      color: var(--red);
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    @media(max-width:760px) {
+      #page-reservation .grid.gap-10 {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+    }
+
+    @media(max-width:520px) {
+      #page-reservation>section>.mx-auto.max-w-5xl {
+        width: 90%;
+      }
+
+      #resForm>.grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      #resSuccess>div {
+        flex-direction: column;
+      }
+
+      #resSuccess a {
+        width: 100%;
+      }
+    }
+
+    /* ════════ PAGE TOGGLING ════════ */
+    .page {
+      display: none
+    }
+
+    .page.active {
+      display: block
+    }
+
+    /* ════════ SCROLL REVEAL ════════ */
+    .io {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity .9s ease, transform .9s cubic-bezier(.22, 1, .3, 1)
+    }
+
+    .io.in {
+      opacity: 1;
+      transform: none
+    }
+
+    .io-d1 {
+      transition-delay: .12s
+    }
+
+    .io-d2 {
+      transition-delay: .24s
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══════════ HEADER ══════════ -->
+  <header id="header">
+    <nav class="nav">
+      <a href="#home" class="brand">
+        <img class="brand-mark" src="images/logo.webp" alt="AB-AS Café logo">
+        <span><b>AB-AS CAFÉ</b><small>Dessie · Ethiopia</small></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a id="navCall" class="nav-cta" href="#page-reservation">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="16" rx="2"></rect>
+          <path d="M16 3v4M8 3v4M3 10h18"></path>
+        </svg>
+        Book a Table
+      </a>
+      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </header>
+
+  <div id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a id="mmCall" href="#page-reservation" style="font-size:1rem;font-family:var(--sans);letter-spacing:.2em;color:var(--gold-soft)">
+      Book Table</a>
+    <div class="mm-meta">AB-AS Café · Dessie</div>
+  </div>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section id="home" data-page="home">
+    <div class="hero-media">
+      <img alt="AB-AS Café interior — red seating, checkered floor and warm golden light">
+    </div>
+    <div class="hero-inner">
+      <span class="hero-eyebrow rv">☕ Coffee · Burgers · Pizza · Drinks</span>
+      <h1 class="hero-title rv d1">AB-AS<br><span class="accent">CAFÉ</span></h1>
+      <p class="hero-loc rv d2">Dessie, Ethiopia</p>
+      <p class="hero-tag rv d3" data-bind="tagline"></p>
+      <div class="hero-btns rv d4">
+        <a href="#about" class="btn btn-primary">Explore Our Café</a>
+        <a href="#menu" class="btn btn-gold">View Menu</a>
+        <a href="#contact" class="btn btn-ghost">Contact Us</a>
+      </div>
+    </div>
+    <div class="hero-foot">
+      <div class="hero-scroll">Scroll</div>
+    </div>
+  </section>
+  <div class="checker"></div>
+
+  <!-- ══════════ ABOUT ══════════ -->
+  <section id="about" data-page="about">
+    <div class="wrap about-grid">
+      <div class="collage io">
+        <div class="img-slot collage-a"></div>
+        <div class="img-slot collage-b"></div>
+        <div class="collage-badge"><b>Cozy</b><span>Atmosphere</span></div>
+      </div>
+      <div class="about-copy">
+        <span class="kicker">About the Café</span>
+        <h2 class="sec-title">A warm corner of <em>Dessie</em></h2>
+        <p class="sec-sub">AB-AS Café is a cozy café in Arada, Dessie — a place to sit back, enjoy good coffee and great
+          food, and spend time with friends. With red upholstered seating, warm golden lighting and colorful walls, the
+          space is made for relaxing.</p>
+        <div class="pill-list">
+          <span class="pill"><i></i>Coffee</span>
+          <span class="pill"><i></i>Burgers</span>
+          <span class="pill"><i></i>Pizza</span>
+          <span class="pill"><i></i>Refreshing Drinks</span>
+          <span class="pill"><i></i>Other Food</span>
+          <span class="pill"><i></i>Cozy Atmosphere</span>
+        </div>
+        <p class="sec-sub" style="margin-bottom:32px">Come up to the 2nd floor, in front of Rukiya Hall — grab a table,
+          order a cup, and enjoy the atmosphere.</p>
+        <a href="#menu" class="btn btn-primary">See What We Serve</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ MENU PREVIEW ══════════ -->
+  <section id="menu" class="page active" data-page="menu">
+    <div class="wrap">
+      <div class="menu-head io">
+        <div>
+          <span class="kicker" style="color:var(--gold-soft)">What We Serve</span>
+          <h2 class="sec-title">Good coffee. <em>Great food.</em></h2>
+          <p class="sec-sub">A look at what you'll find at AB-AS Café — made fresh, served warm.</p>
+        </div>
+        <div class="menu-note">A few favorites from our drinks, fast-food, juice and lunch menus. Prices are shown in
+          ETB.</div>
+      </div>
+      <div id="menuPreviewGrid" class="menu-preview-grid"></div>
+      <div class="serve-cta io">
+        <button id="showFullMenuBtn" class="btn btn-gold" type="button" onclick="showPage('full-menu')">See Full
+          Menu</button>
+      </div>
+    </div>
+  </section>
+  <div class="checker"></div>
+
+  <!-- ══════════ FULL MENU ══════════ -->
+  <section id="full-menu" class="page" data-page="full-menu">
+    <div class="wrap">
+      <div class="menu-head io">
+        <div>
+          <span class="kicker" style="color:var(--gold-soft)">Our Complete Menu</span>
+          <h2 class="sec-title">Find your <em>favorite.</em></h2>
+          <p class="sec-sub">Explore every dish and drink, grouped by category.</p>
+        </div>
+        <div class="menu-note">All listed prices are in ETB. Visit us in front of Rukiya Hall, 2nd floor.</div>
+      </div>
+      <nav id="menuCategoryNav" class="menu-category-nav" aria-label="Full menu categories"></nav>
+      <div id="fullMenu"></div>
+      <div class="serve-cta io">
+        <p>Hungry? Call ahead or visit us on the 2nd floor, in front of Rukiya Hall.</p>
+        <a id="serveCall" class="btn btn-primary" href="#">Call the Café</a>
+        <button id="backToMenuBtn" class="btn btn-ghost" type="button" style="margin-left:12px"
+          onclick="showPage('menu')">Back to Menu</button>
+      </div>
+    </div>
+  </section>
+  <div class="checker"></div>
+
+  <!-- ══════════ GALLERY ══════════ -->
+  <section id="gallery">
+    <div class="wrap">
+      <div style="text-align:center;margin-bottom:52px" class="io">
+        <span class="kicker" style="justify-content:center">Gallery</span>
+        <h2 class="sec-title">Inside <em>AB-AS</em></h2>
+        <p class="sec-sub" style="margin-inline:auto">Red seating, checkered floors, warm light and colorful walls — tap
+          any photo to view it full screen.</p>
+      </div>
+      <div id="masonry"></div>
+    </div>
+  </section>
+
+  <!-- ══════════ TESTIMONIALS ══════════ -->
+  <section id="testimonials">
+    <div class="wrap">
+      <div class="reviews-heading io">
+        <span class="kicker" style="justify-content:center">Guest Reviews</span>
+        <h2 class="sec-title">Kind words from <em>Dessie.</em></h2>
+        <p class="sec-sub" style="margin-inline:auto">Thank you to everyone who shares their AB-AS Café experience.</p>
+        <div class="review-summary" aria-label="Google rating 4.4 out of 5 from 7 reviews">
+          <strong>4.4 / 5</strong>
+          <span>Google rating · 7 reviews</span>
+        </div>
+      </div>
+      <div class="review-grid">
+        <article class="review-card io">
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="review-quote">“Tnx for bringing this type of cafe for our town dessie”</blockquote>
+          <div class="review-author">
+            <strong>Abdu Imran</strong>
+            <span>Google review · a year ago</span>
+          </div>
+        </article>
+        <article class="review-card io io-d1">
+          <div class="review-stars" role="img" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="review-quote">“Best cafe in dessie”</blockquote>
+          <div class="review-author">
+            <strong>Abdu Asfaw</strong>
+            <span>Google review · a year ago</span>
+          </div>
+        </article>
+      </div>
+      <div class="review-cta io">
+        <a class="btn btn-primary"
+          href="https://www.google.com/maps/place/Ab-As+Cafe/@11.1160936,39.6307291,17z/data=!4m8!3m7!1s0x16470b006ca8c8c3:0x46dd673571f63607!8m2!3d11.1159989!4d39.6326496!9m1!1b1!16s%2Fg%2F11wj9mbxfh?entry=ttu&amp;g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank" rel="noopener noreferrer">Write a Review</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ CONTACT ══════════ -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="io" style="text-align:center;max-width:640px;margin-inline:auto">
+        <span class="kicker" style="justify-content:center">Find Us</span>
+        <h2 class="sec-title">Visit <em>AB-AS Café</em></h2>
+        <p class="sec-sub">Dessie, Arada — in front of Rukiya Hall, 2nd floor. Easy to find, easy to love.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="info-card io">
+          <div class="info-row">
+            <div class="info-ic">🕒</div>
+            <div>
+              <h4>Opening Hours</h4>
+              <p>Monday – Sunday<br>7:00 AM – 8:00 PM</p>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-ic">📞</div>
+            <div>
+              <h4>Phone</h4><a id="phoneLink" href="#"><span data-bind="phone"></span></a>
+            </div>
+          </div>
+          <div class="info-row">
+            <div class="info-ic">🎵</div>
+            <div>
+              <h4>TikTok</h4><a id="tiktokLink" href="#" target="_blank" rel="noopener"><span
+                  data-bind="tiktok"></span></a>
+            </div>
+          </div>
+          <div class="contact-actions">
+            <a id="callBtn" class="act act-call" href="#">📞 Call Now</a>
+            <a id="tiktokBtn" class="act act-tiktok" href="#" target="_blank" rel="noopener">🎵 Follow on TikTok</a>
+            <a id="dirBtn" class="act act-call" style="background:var(--gold);color:var(--black)" href="#"
+              target="_blank" rel="noopener">🧭 Get Directions</a>
+          </div>
+        </div>
+        <div class="map-card io io-d1">
+          <iframe id="mapFrame" title="AB-AS Café location map" loading="lazy" allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE: RESERVATION ============ -->
+  <div id="page-reservation" class="page">
+    <section class="bg-latte py-20 sm:py-28">
+      <div class="mx-auto max-w-5xl px-6">
+        <div class="mx-auto mb-12 max-w-2xl text-center">
+          <p class="mb-2 text-xs font-semibold uppercase tracking-[0.25em] text-accent-dark">Reservations</p>
+          <h2 class="font-serif text-3xl font-semibold text-espresso sm:text-4xl">Book a Table</h2>
+          <p class="mt-3 text-mocha/80">Send us your reservation request by SMS. We’ll confirm availability with you.</p>
+          <div class="mx-auto mt-4 h-0.5 w-16 bg-accent"></div>
+        </div>
+        <div class="grid gap-10 lg:grid-cols-2 lg:gap-16">
+          <div class="rounded-2xl bg-cream p-8 shadow-lg sm:p-10">
+            <form id="resForm" class="space-y-5">
+              <div class="grid gap-5 sm:grid-cols-2">
+                <label class="block"><span class="mb-1 block text-sm font-medium text-espresso">Name</span>
+                  <input required name="name" type="text" placeholder="Your name"
+                    class="w-full rounded-lg border border-espresso/20 bg-cream px-4 py-3 placeholder:text-mocha/50 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40" /></label>
+                <label class="block"><span class="mb-1 block text-sm font-medium text-espresso">Phone</span>
+                  <input required name="phone" type="tel" placeholder="Your phone"
+                    class="w-full rounded-lg border border-espresso/20 bg-cream px-4 py-3 placeholder:text-mocha/50 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40" /></label>
+              </div>
+              <div class="grid gap-5 sm:grid-cols-2">
+                <label class="block"><span class="mb-1 block text-sm font-medium text-espresso">Date</span>
+                  <input required name="date" type="date"
+                    class="w-full rounded-lg border border-espresso/20 bg-cream px-4 py-3 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40" /></label>
+                <label class="block"><span class="mb-1 block text-sm font-medium text-espresso">Time</span>
+                  <input required name="time" type="time"
+                    class="w-full rounded-lg border border-espresso/20 bg-cream px-4 py-3 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40" /></label>
+              </div>
+              <label class="block"><span class="mb-1 block text-sm font-medium text-espresso">Guests</span>
+                <input required name="guests" type="number" min="1" max="12" value="2"
+                  class="w-full rounded-lg border border-espresso/20 bg-cream px-4 py-3 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/40" /></label>
+              <button type="submit"
+                class="w-full rounded-full bg-accent px-8 py-3 text-sm font-semibold uppercase tracking-widest text-espresso shadow-md transition-all hover:bg-accent-dark hover:shadow-lg active:scale-95">Prepare SMS Request</button>
+            </form>
+            <div id="resSuccess" class="hidden pt-6" aria-live="polite">
+              <p class="font-serif text-xl font-semibold text-espresso">Your message is ready</p>
+              <p class="mt-2 text-sm text-mocha">Review the details in your messaging app and tap Send. Your request is not submitted until you send the SMS.</p>
+              <div class="mt-4 flex flex-wrap gap-3">
+                <a id="reservationSmsLink" href="#"
+                  class="inline-flex items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-semibold text-espresso transition-colors hover:bg-accent-dark">Open
+                  SMS</a>
+                <a id="reservationCallLink" href="#"
+                  class="inline-flex items-center justify-center rounded-full border border-espresso/20 px-5 py-3 text-sm font-semibold text-espresso transition-colors hover:bg-latte">Call
+                  the Café</a>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <div class="rounded-2xl bg-cream p-8 shadow-lg">
+              <h3 class="font-serif text-xl font-semibold text-espresso">AB-AS Café · Dessie</h3>
+              <p class="mt-2 text-mocha">Arada — in front of Rukiya Hall, 2nd floor</p>
+              <p class="mt-4"><a id="reservationPhoneLink" href="#"
+                  class="font-medium text-espresso hover:text-accent-dark">0907220022</a></p>
+              <p class="mt-4 text-mocha"><strong class="text-espresso">Open daily</strong><br>Monday – Sunday, 7:00 AM – 8:00 PM</p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a href="#home" class="brand"><img class="brand-mark" src="images/logo.webp" alt=""><span><b>AB-AS
+                CAFÉ</b><small>Dessie · Ethiopia</small></span></a>
+          <p>Good coffee. Great food. A place to enjoy — in the heart of Dessie, Arada.</p>
+        </div>
+        <div>
+          <h5>Navigation</h5>
+          <ul class="foot-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <ul class="foot-links">
+            <li><a id="footPhone" href="#">📞 <span data-bind="phone"></span></a></li>
+            <li><a id="footTiktok" href="#" target="_blank" rel="noopener">🎵 <span data-bind="tiktok"></span></a></li>
+            <li>📍 Dessie, Arada — in front of Rukiya Hall, 2nd floor</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="year"></span> AB-AS Café · Dessie, Ethiopia</span>
+        <span>Made with ☕ &amp; warmth</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- floating call button (mobile) -->
+  <a id="floatCall" href="#" aria-label="Call AB-AS Café">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+      <path
+        d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z" />
+    </svg>
+  </a>
+
+  <!-- lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+    <button id="lbClose" aria-label="Close">✕</button>
+    <button id="lbPrev" class="lb-btn" aria-label="Previous">‹</button>
+    <img id="lbImg" alt="">
+    <button id="lbNext" class="lb-btn" aria-label="Next">›</button>
+    <div id="lbCap"></div>
+  </div>
+
+  <script>
+    /* ════════════════════════════════════════════════════════════
+       ★★★ CENTRAL CAFÉ CONFIG — EDIT EVERYTHING HERE ★★★
+       Photos below are AI-generated PLACEHOLDERS for preview.
+       Replace with real café photos (local paths like "images/x.jpg"
+       work too — missing files show a styled placeholder).
+       ════════════════════════════════════════════════════════════ */
+    const CAFE = {
+      name: "AB-AS Café",
+      nameUpper: "AB-AS CAFÉ",
+      tagline: "Good coffee. Great food. A place to enjoy.",
+      phone: "0907220022",
+      phoneIntl: "+251907220022",
+      tiktok: "@ab_as_cafe_dessie",
+      tiktokUrl: "https://www.tiktok.com/@ab_as_cafe_dessie",
+      mapQuery: "Rukiya Hall, Dessie, Ethiopia",
+
+      images: {
+        hero: "images/01-exterior-front.jpg",
+        aboutMain: "images/03-main-dining-room.jpg",
+        aboutSecond: "images/07-art-wall-and-seating.jpg",
+      },
+
+      gallery: [
+        { cap: "AB-AS Café Exterior", file: "images/01-exterior-front.jpg", shape: "r-wide" },
+        { cap: "Food Platter", file: "images/02-food-platter.jpg", shape: "r-tall" },
+        { cap: "Main Dining Room", file: "images/03-main-dining-room.jpg", shape: "r-mid" },
+        { cap: "Burger & Fries", file: "images/04-burger-and-fries.jpg", shape: "r-mid" },
+        { cap: "AB-AS Logo Wall", file: "images/05-ab-as-logo-wall.jpg", shape: "r-sq" },
+        { cap: "Dining Room", file: "images/06-main-dining-room-wide.jpg", shape: "r-sq" },
+        { cap: "Art Wall & Seating", file: "images/07-art-wall-and-seating.jpg", shape: "r-tall" },
+        { cap: "Art Wall Detail", file: "images/08-art-wall-detail.jpg", shape: "r-mid" },
+        { cap: "Burger Wall Mural", file: "images/09-mural-burger-wall.jpg", shape: "r-sq" },
+        { cap: "Mural & Seating", file: "images/10-interior-mural-seating.jpg", shape: "r-mid" },
+        { cap: "Bright Interior", file: "images/11-bright-interior.jpg", shape: "r-sq" },
+        { cap: "AB-AS Exterior Sign", file: "images/12-ab-as-exterior-sign.jpg", shape: "r-tall" },
+      ],
+    };
+
+    const menuCategories = [
+      {
+        name: "Drinks",
+        folder: "drinks",
+        items: [
+          ["Buna-(Coffee).webp", "Freshly brewed Ethiopian coffee with a rich, comforting aroma.", 35],
+          ["Qeshir.webp", "A traditional coffee-husk infusion with a fragrant, gently spiced character.", 30],
+          ["Shay-(Tea).webp", "A warm cup of tea, freshly prepared and served hot.", 25],
+          ["Soft-drinks.webp", "A selection of chilled soft drinks.", 45],
+          ["Spris.webp", "A colorful layered juice blend, served refreshingly cold.", 100],
+          ["Water - 1-liters.webp", "Bottled drinking water, 1 liter.", 30],
+          ["Water-2-liter.webp", "Bottled drinking water, 2 liters.", 40],
+          ["Water-½-liter.webp", "Bottled drinking water, ½ liter.", 20],
+        ],
+      },
+      {
+        name: "Fast Foods",
+        folder: "fast foods",
+        items: [
+          ["borito.webp", "A freshly prepared borito, made for a filling and satisfying meal.", 220],
+          ["borrito.jpg", "A hearty borrito, freshly prepared and served warm.", 240],
+          ["chees burger.jpg", "A classic cheeseburger served fresh from the kitchen.", 250],
+          ["double-speacial-burger.jpg", "A double special burger for a bigger, satisfying bite.", 350],
+          ["egg sandwich.webp", "A simple, satisfying egg sandwich, prepared fresh.", 120],
+          ["normal ertib.jpg", "A classic ertib, freshly prepared to order.", 180],
+          ["normal-sandwich.jpg", "A freshly made sandwich, served as a quick and filling choice.", 160],
+          ["normal-shuwarma.jpg", "A classic shuwarma, prepared fresh and served warm.", 220],
+          ["speacial-ertib.jpg", "A special ertib, freshly prepared from our kitchen.", 250],
+          ["speacial-shuarma.jpg", "A special shuarma, served warm and freshly prepared.", 280],
+        ],
+      },
+      {
+        name: "Juice",
+        folder: "juice",
+        items: [
+          ["avocado-juice.jpg", "Creamy avocado juice, blended fresh and served chilled.", 120],
+          ["mango-juice.jpg", "Sweet mango juice, freshly blended and served cold.", 120],
+          ["spris.jpg", "A refreshing mixed juice, freshly blended in colorful layers.", 130],
+        ],
+      },
+      {
+        name: "Lunch",
+        folder: "lunch",
+        items: [
+          ["Injera-Firfir.webp", "Soft pieces of injera mixed into a comforting, traditional firfir.", 220],
+          ["Normal-Atiklt.webp", "A home-style atikilt vegetable dish, served with injera.", 180],
+          ["Pasta-Batiklt.webp", "A warm pasta and vegetable dish, freshly prepared for lunch.", 200],
+          ["Pasta-Besgo.webp", "A hearty pasta besgo dish, served warm.", 220],
+          ["Timatim-Leb-Leb.webp", "A bright, freshly prepared tomato dish served with injera.", 170],
+        ],
+      },
+    ];
+
+    const formatMenuName = image => {
+      const name = image.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ").replace(/\b\w/g, letter => letter.toUpperCase());
+      return {
+        "Chees Burger": "Cheeseburger",
+        "Double Speacial Burger": "Double Special Burger",
+        "Speacial Ertib": "Special Ertib",
+        "Speacial Shuarma": "Special Shuarma",
+      }[name] || name;
+    };
+    const menuItems = menuCategories.flatMap(category => category.items.map(([image, description, price]) => ({
+      name: formatMenuName(image),
+      description,
+      price,
+      category: category.name,
+      image: `images/${encodeURIComponent(category.folder)}/${encodeURIComponent(image)}`,
+    })));
+    const featuredMenuItems = ["Buna (Coffee)", "Cheeseburger", "Avocado Juice", "Injera Firfir"]
+      .map(name => menuItems.find(item => item.name === name));
+
+    /* ---------- Bind text + links ---------- */
+    document.querySelectorAll("[data-bind]").forEach(el => { const k = el.dataset.bind; if (CAFE[k]) el.textContent = CAFE[k]; });
+    const telHref = "tel:" + CAFE.phoneIntl;
+    ["serveCall", "callBtn", "phoneLink", "floatCall", "footPhone"].forEach(id => { const el = document.getElementById(id); if (el) el.href = telHref; });
+    ["tiktokLink", "tiktokBtn", "footTiktok"].forEach(id => { const el = document.getElementById(id); if (el) el.href = CAFE.tiktokUrl; });
+    const mapSearch = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(CAFE.mapQuery);
+    document.getElementById("dirBtn").href = mapSearch;
+    const mapEmbedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3914.963536780148!2d39.63072913834534!3d11.116093647943112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x16470b006ca8c8c3%3A0x46dd673571f63607!2sAb-As%20Cafe!5e0!3m2!1sen!2set!4v1791185639250!5m2!1sen!2set";
+    document.getElementById("mapFrame").src = mapEmbedUrl;
+    document.getElementById("reservationPhoneLink").href = telHref;
+    document.getElementById("reservationCallLink").href = telHref;
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.getElementById("resForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const reservation = new FormData(form);
+      const message = [
+        "Hello AB-AS Cafe, I would like to request a table reservation.",
+        `Name: ${reservation.get("name")}`,
+        `Phone: ${reservation.get("phone")}`,
+        `Date: ${reservation.get("date")}`,
+        `Time: ${reservation.get("time")}`,
+        `Guests: ${reservation.get("guests")}`,
+      ].join("\n");
+      document.getElementById("reservationSmsLink").href =
+        `sms:${CAFE.phoneIntl}?body=${encodeURIComponent(message)}`;
+      form.hidden = true;
+      document.getElementById("resSuccess").classList.remove("hidden");
+    });
+
+    /* ---------- Image slots with branded fallbacks ---------- */
+    const phIcon = '<svg class="ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 8a2 2 0 0 1 2-2h2l2-3h6l2 3h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/></svg>';
+    function makeImgSlot(file, label, alt) {
+      const slot = document.createElement("div"); slot.className = "img-slot";
+      const img = document.createElement("img"); img.src = file; img.alt = alt || label || "AB-AS Café"; img.loading = "lazy";
+      img.addEventListener("load", () => slot.classList.add("has-img"));
+      img.addEventListener("error", () => {
+        slot.insertAdjacentHTML("beforeend",
+          `<div class="img-fallback">${phIcon}<span class="ph-label">${label || "AB-AS Café"}</span><span class="ph-file">${file}</span></div>`);
+      });
+      slot.appendChild(img); return slot;
+    }
+
+    /* Hero */
+    const heroSlot = document.querySelector(".hero-media");
+    {
+      const img = heroSlot.querySelector("img"); img.src = CAFE.images.hero;
+      const show = () => { img.classList.add("loaded"); document.body.classList.add("loaded-page"); };
+      if (img.complete && img.naturalWidth) show(); else img.addEventListener("load", show);
+      img.addEventListener("error", () => {
+        document.body.classList.add("loaded-page");
+        heroSlot.insertAdjacentHTML("beforeend", `<div class="img-fallback" style="position:absolute;inset:0">${phIcon}<span class="ph-label">Café exterior photo</span><span class="ph-file">images/01-exterior-front.jpg</span></div>`);
+      });
+    }
+
+    /* About collage */
+    const a1 = makeImgSlot(CAFE.images.aboutMain, "Café interior — red seating"); a1.classList.add("collage-a");
+    const a2 = makeImgSlot(CAFE.images.aboutSecond, "Checkered floor & murals"); a2.classList.add("collage-b");
+    document.querySelector(".collage-a").replaceWith(a1);
+    document.querySelector(".collage-b").replaceWith(a2);
+
+    /* Menu preview */
+    const menuPreviewGrid = document.getElementById("menuPreviewGrid");
+    featuredMenuItems.forEach(item => {
+      const card = document.createElement("article");
+      card.className = "menu-preview-card io";
+      card.innerHTML = `<img src="${item.image}" alt="${item.name}" loading="lazy">
+    <div class="menu-preview-body">
+      <h3>${item.name}</h3>
+      <p>${item.description}</p>
+      <span class="menu-price">ETB ${item.price}</span>
+    </div>`;
+      menuPreviewGrid.appendChild(card);
+    });
+
+    /* Page switching */
+    const pages = [...document.querySelectorAll('.page')];
+    function showPage(pageId) {
+      pages.forEach(page => page.classList.toggle('active', page.id === pageId));
+      const activePage = document.getElementById(pageId);
+      if (activePage) activePage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    document.getElementById('showFullMenuBtn')?.addEventListener('click', () => showPage('full-menu'));
+    document.getElementById('backToMenuBtn')?.addEventListener('click', () => showPage('menu'));
+
+    const allPageAnchors = [...document.querySelectorAll('a[href^="#"]')];
+    allPageAnchors.forEach(link => {
+      const target = link.getAttribute('href');
+      if (target === '#page-reservation' || target === '#menu' || target === '#full-menu' || target === '#about' || target === '#home' || target === '#gallery' || target === '#contact') {
+        link.addEventListener('click', e => {
+          const pageId = target.replace('#', '');
+          if (pageId === 'page-reservation' || ((pageId === 'menu' || pageId === 'full-menu') && document.getElementById(pageId))) {
+            e.preventDefault();
+            showPage(pageId);
+          }
+        });
+      }
+    });
+
+    /* Full menu */
+    const categoryNav = document.getElementById("menuCategoryNav");
+    const fullMenu = document.getElementById("fullMenu");
+    menuCategories.forEach((category, index) => {
+      const categoryId = `full-menu-${index}`;
+      const link = document.createElement("a");
+      link.href = `#${categoryId}`;
+      link.textContent = category.name;
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        showPage('full-menu');
+        const target = document.getElementById(categoryId);
+        if (target) {
+          setTimeout(() => target.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+        }
+      });
+      categoryNav.appendChild(link);
+
+      const section = document.createElement("section");
+      section.className = "menu-category io";
+      section.id = categoryId;
+      const items = menuItems.filter(item => item.category === category.name);
+      section.innerHTML = `<h3>${category.name}</h3><div class="menu-items">${items.map(item => `
+    <article class="menu-item">
+      <img src="${item.image}" alt="${item.name}" loading="lazy">
+      <div>
+        <h4>${item.name}</h4>
+        <p>${item.description}</p>
+        <span class="menu-price">ETB ${item.price}</span>
+      </div>
+    </article>`).join("")}</div>`;
+      fullMenu.appendChild(section);
+    });
+
+    /* Gallery + lightbox */
+    const masonry = document.getElementById("masonry");
+    const lightbox = document.getElementById("lightbox");
+    const lbImg = document.getElementById("lbImg"), lbCap = document.getElementById("lbCap");
+    let lbIndex = 0;
+    CAFE.gallery.forEach((g, i) => {
+      const item = document.createElement("div");
+      item.className = "g-item io " + g.shape; item.style.transitionDelay = (i % 4) * 0.07 + "s";
+      item.appendChild(makeImgSlot(g.file, g.cap, g.cap + " — AB-AS Café"));
+      item.insertAdjacentHTML("beforeend", `<div class="g-cap">${g.cap}</div>`);
+      item.addEventListener("click", () => openLb(i));
+      masonry.appendChild(item);
+    });
+    function openLb(i) {
+      lbIndex = (i + CAFE.gallery.length) % CAFE.gallery.length;
+      const g = CAFE.gallery[lbIndex];
+      lbImg.src = g.file; lbImg.alt = g.cap; lbCap.textContent = g.cap;
+      lightbox.classList.add("open"); lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLb() { lightbox.classList.remove("open"); lightbox.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; }
+    document.getElementById("lbClose").addEventListener("click", closeLb);
+    document.getElementById("lbPrev").addEventListener("click", e => { e.stopPropagation(); openLb(lbIndex - 1); });
+    document.getElementById("lbNext").addEventListener("click", e => { e.stopPropagation(); openLb(lbIndex + 1); });
+    lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLb(); });
+    document.addEventListener("keydown", e => {
+      if (!lightbox.classList.contains("open")) return;
+      if (e.key === "Escape") closeLb();
+      if (e.key === "ArrowLeft") openLb(lbIndex - 1);
+      if (e.key === "ArrowRight") openLb(lbIndex + 1);
+    });
+
+    /* Mobile menu */
+    const burger = document.getElementById("burger");
+    const mobileMenu = document.getElementById("mobileMenu");
+    burger.addEventListener("click", () => {
+      burger.classList.toggle("open"); mobileMenu.classList.toggle("open");
+      document.body.style.overflow = mobileMenu.classList.contains("open") ? "hidden" : "";
+    });
+    mobileMenu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+      burger.classList.remove("open"); mobileMenu.classList.remove("open"); document.body.style.overflow = "";
+    }));
+
+    /* Header scroll state */
+    const header = document.getElementById("header");
+    const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 40);
+    window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+    /* Scroll reveal */
+    const ioObs = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); ioObs.unobserve(en.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll(".io").forEach(el => ioObs.observe(el));
+  </script>
+</body>
+
+</html>
